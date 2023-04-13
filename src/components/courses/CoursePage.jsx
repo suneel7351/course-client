@@ -31,7 +31,6 @@ function CoursePage({ user }) {
     setLectureNo(index);
   };
 
-
   return (
     <>
       {loading ? (
@@ -56,6 +55,7 @@ function CoursePage({ user }) {
                           }
                           className="h-full"
                           controls
+                          controlsList="nodownload nofullscreen"
                         ></video>
                       </div>
                       <h1 className="text-xl text-slate-700">

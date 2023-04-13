@@ -1,12 +1,11 @@
 import './style.css';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
 import CourseAction from '../../redux/actions/course';
 import { useDispatch, useSelector } from 'react-redux';
 import CourseCard from './CourseCard';
 import toast from 'react-hot-toast';
 import Loader from '../layouts/Loader';
-import User from '../../redux/actions/user';
 const Courses = () => {
   const dispatch = useDispatch();
   const [category, setCategory] = useState('');

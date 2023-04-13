@@ -5,12 +5,11 @@ import { MdDelete } from 'react-icons/md';
 import Loader from '../layouts/Loader';
 import toast from 'react-hot-toast';
 function Users() {
-
   const { users, loading, message, error } = useSelector(state => state.admin);
   const dispatch = useDispatch();
-  const changeRoleHandler = id => {
-    dispatch(AdminAction.changeUserRole(id));
-  };
+  // const changeRoleHandler = id => {
+  //   dispatch(AdminAction.changeUserRole(id));
+  // };
   const deleteUserHandler = id => {
     dispatch(AdminAction.deleteUser(id));
   };
@@ -100,12 +99,12 @@ function Users() {
                         </td>{' '}
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <div className="flex gap-2 items-center">
-                            <button
+                            {/* <button
                               className="btn btn-secondary"
                               onClick={() => changeRoleHandler(item._id)}
                             >
                               Change Role
-                            </button>
+                            </button> */}
                             <MdDelete
                               className="text-2xl cursor-pointer"
                               onClick={() => deleteUserHandler(item._id)}

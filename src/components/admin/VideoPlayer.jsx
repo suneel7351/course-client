@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MdCancel } from 'react-icons/md';
+
 function VideoPlayer({ videoUrl }) {
   const [showModal, setShowModal] = useState(false);
 

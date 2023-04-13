@@ -1,12 +1,10 @@
 import React from 'react';
-import { Button, Heading, Image, Stack, Text, VStack } from '@chakra-ui/react';
+
 import './home.css';
 import { Link } from 'react-router-dom';
 import vg from '../assets/imgs/home.jpg';
-import vd from '../assets/videos/demo.mp4';
-// import Typewriter from './utils/Typewriter';
-import CourseCard from './courses/CourseCard';
-function Home({ courses = [] }) {
+
+function Home() {
   return (
     <section className=" h-full ">
       <div className="flex flex-col md:flex-row  justify-center gap-8">
@@ -34,25 +32,8 @@ function Home({ courses = [] }) {
         </div>
       </div>
 
-      <div className="mt-12 ">
-        <h1 className="text-3xl text-center text-bold">Latest Courses</h1>
-        <div className="flex flex-wrap justify-evenly  py-8 ">
-          {courses &&
-            courses.length > 0 &&
-            courses.map(item => (
-              <CourseCard
-                key={item._id}
-                poster={item.poster}
-                title={item.title}
-                description={item.description}
-                category={item.category}
-                CreatedAt={item.CreatedAt}
-                createdBy={item.createdBy}
-                views={item.views}
-              />
-            ))}
-        </div>
-      </div>
+    
+     
     </section>
   );
 }

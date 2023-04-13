@@ -20,7 +20,7 @@ function Lectures() {
     message: adminMessage,
   } = useSelector(state => state.admin);
 
-  const [title, setTitle] = useState('');
+
   const [lectureTitle, setLectureTitle] = useState();
   const [video, setVideo] = useState();
   const [videoPreview, setVideoPreview] = useState();
@@ -80,7 +80,7 @@ function Lectures() {
       ) : (
         <div className="flex flex-col md:flex-row gap-8">
           <div className="py-8 flex flex-col gap-4 pl-4 flex-1">
-            <h1 className="text-3xl text-slate-600">{title}</h1>{' '}
+            
             {/* <span className="text-slate-700">#{id}</span>{' '} */}
             <Link className="btn btn-secondary w-[50px]" to="/admin/courses">
               Back
