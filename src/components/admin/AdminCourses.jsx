@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import AdminAction from '../../redux/actions/admin';
-import { MdDelete, MdFileUpload } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
 import Loader from '../layouts/Loader';
 import toast from 'react-hot-toast';
-import { Navigate } from 'react-router-dom';
 function Courses() {
-  const { user } = useSelector(state => state.user);
+
 
   const { courses, loading, message, error } = useSelector(
     state => state.admin
@@ -31,9 +30,6 @@ function Courses() {
     }
   }, [dispatch, error, message]);
 
-  if (user && user.role !== 'admin') {
-    return <Navigate to={'/profile'} />;
-  }
   return (
     <>
       {loading ? (

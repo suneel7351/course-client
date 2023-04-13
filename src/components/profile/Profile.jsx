@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Loader from '../layouts/Loader';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Subscription from '../../redux/actions/subscription';
 import User from '../../redux/actions/user';
@@ -28,7 +28,6 @@ function Profile() {
   } = useSelector(state => state.enroll);
   const {
     user,
-    isLogged,
     loading,
     error: userError,
     message: userMessage,
@@ -118,10 +117,6 @@ function Profile() {
       dispatch({ type: 'clearError' });
     }
   }, [dispatch, error, message, userError, userMessage]);
-
-  if (!isLogged) {
-    return <Navigate to={'/login'} />;
-  }
 
   return (
     <div className="mt-4 container mx-auto">

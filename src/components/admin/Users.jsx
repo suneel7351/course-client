@@ -4,9 +4,7 @@ import AdminAction from '../../redux/actions/admin';
 import { MdDelete } from 'react-icons/md';
 import Loader from '../layouts/Loader';
 import toast from 'react-hot-toast';
-import { Navigate } from 'react-router-dom';
 function Users() {
-  const { user } = useSelector(state => state.user);
 
   const { users, loading, message, error } = useSelector(state => state.admin);
   const dispatch = useDispatch();
@@ -28,9 +26,6 @@ function Users() {
     }
   }, [dispatch, error, message]);
 
-  if (user && user.role !== 'admin') {
-    return <Navigate to={'/profile'} />;
-  }
   return (
     <>
       {loading ? (

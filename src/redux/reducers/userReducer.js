@@ -9,6 +9,19 @@ const userReducer = createReducer(
     user: null,
   },
   {
+    getUserRequest: state => {
+      state.loading = true;
+    },
+    getUserSuccess: (state, action) => {
+      state.loading = false;
+      state.isLogged = true;
+      state.user = action.payload.user;
+    },
+    getUserFail: (state, action) => {
+      state.loading = false;
+      state.isLogged = false;
+      state.error = action.payload.message;
+    },
     loginRequest: state => {
       state.loading = true;
     },
@@ -53,19 +66,7 @@ const userReducer = createReducer(
       state.isLogged = true;
       state.error = action.payload.message;
     },
-    getUserRequest: state => {
-      state.loading = true;
-    },
-    getUserSuccess: (state, action) => {
-      state.loading = false;
-      state.isLogged = true;
-      state.user = action.payload.user;
-    },
-    getUserFail: (state, action) => {
-      state.loading = false;
-      state.isLogged = false;
-      state.error = action.payload.message;
-    },
+
     addToPlaylistRequest: state => {
       state.loading = true;
     },

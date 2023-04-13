@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Courses from './components/courses/Courses';
 import Home from './components/Home';
@@ -26,8 +26,15 @@ import User from './redux/actions/user';
 import { ProtectedRoute } from 'protected-route-react';
 import CourseAction from './redux/actions/course';
 import Lectures from './components/admin/Lectures';
+import Loader from './components/layouts/Loader';
+import AdminRoute from './AdminRoute';
+import SubscriberRoute from './SubscriberRoute';
 
 function App() {
+ 
+
+  // Protect route for logged-in users
+
   // window.addEventListener('contextmenu', e => {
   //   e.preventDefault();
   // });
@@ -47,66 +54,123 @@ function App() {
       toast.error(error);
       dispatch({ type: 'clearError' });
     }
-  }, [dispatch, message, error]);
+  
+  }, [dispatch, message, error, isLogged, user]);
   useEffect(() => {
     dispatch(User.getUser());
     dispatch(CourseAction.getAllCourses());
   }, [dispatch]);
+
   return (
     <BrowserRouter>
-      <Header user={user} isLogged={isLogged} />
-      <div className="mt-16 container mx-auto">
-        {' '}
-        <Routes>
-          <Route path="/" element={<Home courses={courses} />} />
-          <Route path="/courses" element={<Courses courses={courses} />} />
-
-          <Route
-            path="/course/:id"
-            element={
-              <ProtectedRoute isAuthenticated={isLogged}>
-                <CoursePage user={user} />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/login" element={<Login isLogged={isLogged} />} />
-          <Route
-            path="/profile"
-            element={
-              <Profile user={user} loading={loading} isLogged={isLogged} />
-            }
-          />
-          <Route path="/register" element={<Register isLogged={isLogged} />} />
-          <Route path="/forgetPassword" element={<ForgetPassword />} />
-          <Route path="/reset-password/:token" element={<ResetPassword />} />
-          <Route path="/changepassword" element={<UpdatePassword />} />
-          <Route path="/updateprofile" element={<UpdateProfile />} />
-          <Route
-            path="/enroll"
-            element={
-              // <ProtectedRoute isAuthenticated={isLogged}>
-              <Enroll user={user} />
-              // </ProtectedRoute>
-            }
-          />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Notfound />} />
-
-          <Route path="/paymentsuccess" element={<PaymentSuccess />} />
-          <Route path="/paymentfail" element={<PaymentFail />} />
-
-          {/* Protected Route--------only for admin */}
-
-          {/* <Route path="/admin/dashboard" element={<Dashboard />} /> */}
-
-          <Route path="/admin/courses" element={<AdminCourses />} />
-          <Route path="/admin/course/:id" element={<Lectures />} />
-          <Route path="/admin/createcourse" element={<CreateCourses />} />
-          <Route path="/admin/users" element={<Users />} />
-        </Routes>
-      </div>
-
-      <Footer />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          {' '}
+          <Header user={user} isLogged={isLogged} />
+          <div className="mt-16 container mx-auto">
+            {' '}
+            <Routes>
+              <Route path="/" element={<Home courses={courses} />} />
+              <Route
+                path="/courses"
+                element={<Courses courses={courses} />}
+              />{' '}
+              <Route element={<ProtectedRoute isAuthenticated={isLogged} />}>
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/changepassword" element={<UpdatePassword />} />
+                <Route path="/updateprofile" element={<UpdateProfile />} />
+                <Route path="/enroll" element={<Enroll user={user} />} />{' '}
+              </Route>
+              <Route
+                path="/course/:id"
+                element={
+                  <ProtectedRoute isAuthenticated={isLogged}>
+                    <SubscriberRoute
+                      isEnroll={
+                        (user &&
+                          user.subscription &&
+                          user.subscription.status === 'active') ||
+                        (user && user.role === 'admin')
+                          ? true
+                          : false
+                      }
+                      Children={<CoursePage user={user} />}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/login" element={<Login isLogged={isLogged} />} />
+              <Route
+                path="/register"
+                element={<Register isLogged={isLogged} />}
+              />
+              <Route path="/forgetPassword" element={<ForgetPassword />} />
+              <Route
+                path="/reset-password/:token"
+                element={<ResetPassword />}
+              />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<Notfound />} />
+              <Route path="/paymentsuccess" element={<PaymentSuccess />} />
+              <Route path="/paymentfail" element={<PaymentFail />} />
+              {/* Protected Route--------only for admin */}
+              {/* <Route path="/admin/dashboard" element={<Dashboard />} /> */}
+              {/* <Route path="/admin/createcourse" element={<CreateCourses />} /> */}{' '}
+              <Route
+                exact
+                path="/admin/createcourse"
+                element={
+                  <ProtectedRoute isAuthenticated={isLogged}>
+                    <AdminRoute
+                      isAdmin={user && user.role === 'admin' ? true : false}
+                      Children={<CreateCourses />}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/admin/courses"
+                element={
+                  <ProtectedRoute isAuthenticated={isLogged}>
+                    <AdminRoute
+                      isAdmin={user && user.role === 'admin' ? true : false}
+                      Children={<AdminCourses />}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/admin/course/:id"
+                element={
+                  <ProtectedRoute isAuthenticated={isLogged}>
+                    <AdminRoute
+                      Children={<Lectures />}
+                      isAdmin={user && user.role === 'admin' ? true : false}
+                    />
+                  </ProtectedRoute>
+                }
+              />{' '}
+              <Route
+                exact
+                path="/admin/users"
+                element={
+                  <ProtectedRoute isAuthenticated={isLogged}>
+                    <AdminRoute
+                      isAdmin={user && user.role === 'admin' ? true : false}
+                      Children={<Users />}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </div>
+          <Footer />
+        </>
+      )}
       <Toaster />
     </BrowserRouter>
   );

@@ -52,6 +52,7 @@ function CreateCourses() {
     setCreatedBy('');
     setDescription('');
   };
+ 
   useEffect(() => {
     if (error) {
       toast.error(error);

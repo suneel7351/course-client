@@ -6,6 +6,7 @@ import User from '../../redux/actions/user';
 import toast from 'react-hot-toast';
 function Login({ isLogged }) {
   const { loading, error, message } = useSelector(state => state.user);
+ 
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -29,6 +30,7 @@ function Login({ isLogged }) {
       toast.success(message);
       dispatch({ type: 'clearMessage' });
     }
+  
   }, [dispatch, error, message]);
 
   if (isLogged) {
