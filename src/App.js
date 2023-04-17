@@ -39,6 +39,7 @@ function App() {
 
   useEffect(() => {
     dispatch(User.getUser());
+    dispatch(CourseAction.getAllCourses('', ''));
   }, [dispatch]);
 
   return (
@@ -48,7 +49,7 @@ function App() {
       <div className="mt-24 container mx-auto">
         {' '}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home courses={courses} />} />
           <Route path="/courses" element={<Courses courses={courses} />} />{' '}
           <Route element={<ProtectedRoute isAuthenticated={isLogged} />}>
             <Route path="/profile" element={<Profile />} />

@@ -64,16 +64,16 @@ function Header({ user, isLogged }) {
 
         <ul className="nav-list" ref={nav_list}>
           <li onClick={handleLink}>
-            <Link to={'/'}>Home</Link>
+            <Link className='text-lg' to={'/'}>Home</Link>
           </li>{' '}
           <li onClick={handleLink}>
-            <Link to={'/courses'}>Courses</Link>
+            <Link className='text-lg' to={'/courses'}>Courses</Link>
           </li>
           <li onClick={handleLink}>
-            <Link to={'/programming'}>Programming</Link>
+            <Link className='text-lg' to={'/programming'}>Programming</Link>
           </li>
           <li onClick={handleLink}>
-            <Link to={'/blog'}>Blog</Link>
+            <Link className='text-lg' to={'/blog'}>Blog</Link>
           </li>
         </ul>
         <div className="right">
