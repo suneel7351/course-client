@@ -8,16 +8,9 @@ import toast from 'react-hot-toast';
 import Loader from '../layouts/Loader';
 const Courses = () => {
   const dispatch = useDispatch();
-  const [category, setCategory] = useState('');
   const [keyword, setKeyword] = useState('');
-  const Category = [
-    'JavaScript',
-    'Reactjs',
-    'Full Stack',
-    'Nodejs',
-    'React Native',
-  ];
-  const { courses, error, loading } = useSelector(state => state.course);
+
+  const { courses, loading } = useSelector(state => state.course);
   const {
     error: userError,
     loading: userLoading,
@@ -26,17 +19,8 @@ const Courses = () => {
   const searchHandler = () => {
     dispatch(CourseAction.getAllCourses(keyword, ''));
   };
-  const categoryHandler = item => {
-    setCategory(item);
-    dispatch(CourseAction.getAllCourses('', category));
-  };
-
 
   useEffect(() => {
-    if (error) {
-      toast.error(error);
-      dispatch({ type: 'clearError' });
-    }
     if (userError) {
       toast.error(userError);
       dispatch({ type: 'clearError' });
@@ -46,7 +30,7 @@ const Courses = () => {
       dispatch({ type: 'clearMessage' });
     }
     dispatch(CourseAction.getAllCourses('', ''));
-  }, [dispatch, error, userError, message]);
+  }, [dispatch, userError, message]);
   return (
     <>
       <div className="mt-12 py-4">
@@ -66,7 +50,7 @@ const Courses = () => {
               Search
             </button>
           </div>
-          <div className="flex gap-2 flex-wrap items-center mt-6 justify-center">
+          {/* <div className="flex gap-2 flex-wrap items-center mt-6 justify-center">
             {Category.map((item, index) => {
               return (
                 <button
@@ -78,7 +62,7 @@ const Courses = () => {
                 </button>
               );
             })}
-          </div>
+          </div> */}
         </div>
         {loading ? (
           <Loader />

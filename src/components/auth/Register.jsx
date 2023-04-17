@@ -6,7 +6,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import User from '../../redux/actions/user';
 function Register({ isLogged }) {
-  const { error, message, loading } = useSelector(state => state.user);
+  const { error, loading } = useSelector(state => state.user);
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -50,11 +50,7 @@ function Register({ isLogged }) {
       toast.error(error);
       dispatch({ type: 'clearError' });
     }
-    if (message) {
-      toast.success(message);
-      dispatch({ type: 'clearMessage' });
-    }
-  }, [error, message, dispatch]);
+  }, [error, dispatch]);
   if (isLogged) {
     return <Navigate to={'/profile'} />;
   }

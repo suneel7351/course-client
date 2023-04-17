@@ -6,9 +6,9 @@ import otherReducer from './reducers/otherReducer';
 import subscription from './reducers/subscription';
 import userReducer from './reducers/userReducer';
 
-// export const url = 'http://localhost:9889';
+export const url = 'http://localhost:9889';
 // export const url = 'https://course-theta.vercel.app';
-export const url = 'https://courseuniques.onrender.com';
+// export const url = 'https://courseuniques.onrender.com';
 
 const store = configureStore({
   reducer: {

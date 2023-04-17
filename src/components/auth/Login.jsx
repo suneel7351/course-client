@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import User from '../../redux/actions/user';
 import toast from 'react-hot-toast';
 function Login({ isLogged }) {
-  const { loading, error, message } = useSelector(state => state.user);
- 
+  const { loading, error } = useSelector(state => state.user);
+
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -26,12 +26,7 @@ function Login({ isLogged }) {
       toast.error(error);
       dispatch({ type: 'clearError' });
     }
-    if (message) {
-      toast.success(message);
-      dispatch({ type: 'clearMessage' });
-    }
-  
-  }, [dispatch, error, message]);
+  }, [dispatch, error]);
 
   if (isLogged) {
     return <Navigate to={'/profile'} />;

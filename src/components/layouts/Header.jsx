@@ -75,12 +75,6 @@ function Header({ user, isLogged }) {
           <li onClick={handleLink}>
             <Link to={'/blog'}>Blog</Link>
           </li>
-          <li onClick={handleLink}>
-            <Link to={'/contact'}>Contact</Link>
-          </li>{' '}
-          <li onClick={handleLink}>
-            <Link to={'/about'}>About</Link>
-          </li>
         </ul>
         <div className="right">
           {/* <ColorModeSwitcher /> */}
@@ -94,7 +88,7 @@ function Header({ user, isLogged }) {
             <div className="avatar">
               <img
                 src={user && user.avatar && user.avatar.url}
-                className="logged-user md:mr-8"
+                className="logged-user md:mr-8 object-cover"
                 alt="user"
               />
               <div className="dropdown">

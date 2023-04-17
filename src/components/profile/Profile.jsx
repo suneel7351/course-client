@@ -135,7 +135,7 @@ function Profile() {
                   <img
                     src={user.avatar && user.avatar.url}
                     alt={user.name}
-                    className="w-32 h-32 rounded-full"
+                    className="w-32 h-32 rounded-full object-cover"
                   />
                   <span className="text-xl font-medium">{user.name}</span>
                   <button className="btn btn-primary" onClick={onOpen}>

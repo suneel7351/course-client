@@ -29,27 +29,16 @@ import SubscriberRoute from './SubscriberRoute';
 import Work from './components/Work';
 
 function App() {
-  window.addEventListener('contextmenu', e => {
-    e.preventDefault();
-  });
+  // window.addEventListener('contextmenu', e => {
+  //   e.preventDefault();
+  // });
 
-  const { error, message, isLogged, user } = useSelector(state => state.user);
+  const { isLogged, user } = useSelector(state => state.user);
   const { courses } = useSelector(state => state.course);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (message) {
-      toast.success(message);
-      dispatch({ type: 'clearMessage' });
-    }
-    if (error) {
-      toast.error(error);
-      dispatch({ type: 'clearError' });
-    }
-  }, [dispatch, message, error, isLogged, user]);
-  useEffect(() => {
     dispatch(User.getUser());
-    dispatch(CourseAction.getAllCourses());
   }, [dispatch]);
 
   return (
