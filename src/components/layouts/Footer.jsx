@@ -24,7 +24,7 @@ function Footer() {
         <a target="_blank" href="https://github.com/suneel7351">
           <AiFillGithub className="text-3xl text-slate-700 duration-500 hover:transform hover:scale-y-110 hover:scale-x-110" />
         </a>
-        <a target="_blank" href="https://suneelkumar.vercel.app/">
+        <a target="_blank" href="https://suneel.vercel.app">
           <CgProfile className="text-3xl text-slate-700 duration-500 hover:transform  hover:scale-y-110 hover:scale-x-110" />
         </a>
       </div>

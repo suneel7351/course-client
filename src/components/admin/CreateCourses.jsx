@@ -85,7 +85,7 @@ function CreateCourses() {
           onSubmit={submitHandler}
           encType="multipart/form-data"
         >
-          <h1 className="text-2xl text-slate-700">Register</h1>
+          <h1 className="text-2xl text-slate-700">Create Course</h1>
           <input
             required
             placeholder="Course Title"
