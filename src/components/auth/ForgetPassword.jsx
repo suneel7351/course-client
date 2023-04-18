@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useSelector, useDispatch } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import Other from '../../redux/actions/other';
 function ForgetPassword() {
   const dispatch = useDispatch();
@@ -22,33 +23,40 @@ function ForgetPassword() {
     }
   }, [dispatch, error, message]);
   return (
-    <div className="container mx-auto ">
-      <div className="h-[65vh] flex items-center justify-center flex-col gap-8 shadow-md py-4">
-        <h1 className="text-2xl text-center">Forget Password</h1>{' '}
-        <form
-          className="w-[90%] md:w-[50%] lg:w-[35%] mx-auto flex flex-col gap-4"
-          onSubmit={submitHandler}
-        >
-          <input
-            required
-            placeholder="xyz@gmail.com"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            type="email"
-            className=" rounded-md text-slate-700 py-2 pl-4 pr-2 shadow-md active:outline-none outline-none focus:outline-none w-full"
-          />
-          {loading ? (
-            <button className="btn btn-secondary">
-              <div className="small-spinner"></div>
-            </button>
-          ) : (
-            <button type="submit" className="btn btn-secondary">
-              Forget Password
-            </button>
-          )}
-        </form>
+    <>
+      {' '}
+      <Helmet>
+        <title>Forget Password</title>
+        <meta name="description" content="My description" />
+      </Helmet>
+      <div className="container mx-auto ">
+        <div className="h-[65vh] flex items-center justify-center flex-col gap-8 shadow-md py-4">
+          <h1 className="text-2xl text-center">Forget Password</h1>{' '}
+          <form
+            className="w-[90%] md:w-[50%] lg:w-[35%] mx-auto flex flex-col gap-4"
+            onSubmit={submitHandler}
+          >
+            <input
+              required
+              placeholder="xyz@gmail.com"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              type="email"
+              className=" rounded-md text-slate-700 py-2 pl-4 pr-2 shadow-md active:outline-none outline-none focus:outline-none w-full"
+            />
+            {loading ? (
+              <button className="btn btn-secondary">
+                <div className="small-spinner"></div>
+              </button>
+            ) : (
+              <button type="submit" className="btn btn-secondary">
+                Forget Password
+              </button>
+            )}
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

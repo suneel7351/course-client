@@ -1,6 +1,6 @@
 import './style.css';
 import React, { useState, useEffect } from 'react';
-
+import { Helmet } from 'react-helmet';
 import CourseAction from '../../redux/actions/course';
 import { useDispatch, useSelector } from 'react-redux';
 import CourseCard from './CourseCard';
@@ -33,6 +33,11 @@ const Courses = () => {
   }, [dispatch, userError, message]);
   return (
     <>
+      {' '}
+      <Helmet>
+        <title>Courses</title>
+        <meta name="description" content="My description" />
+      </Helmet>
       <div className="mt-12 py-4">
         <h1 className="text-3xl text-center text-bold">Latest Courses</h1>
         <div className="w-[80%] mx-auto mt-4">

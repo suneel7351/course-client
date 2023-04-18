@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import CourseAction from '../../redux/actions/course';
 import { useParams } from 'react-router-dom';
@@ -37,6 +37,10 @@ function CoursePage({ user }) {
         <Loader />
       ) : (
         <>
+          <Helmet>
+            <title>Lectures</title>
+            <meta name="description" content="My description" />
+          </Helmet>
           {lectures && lectures.length > 0 ? (
             <>
               {' '}

@@ -4,6 +4,7 @@ import AdminAction from '../../redux/actions/admin';
 import { MdDelete } from 'react-icons/md';
 import Loader from '../layouts/Loader';
 import toast from 'react-hot-toast';
+import {Helmet} from 'react-helmet'
 function Users() {
   const { users, loading, message, error } = useSelector(state => state.admin);
   const dispatch = useDispatch();
@@ -32,6 +33,10 @@ function Users() {
       ) : (
         <>
           {' '}
+          <Helmet>
+            <title>Admin-Users</title>
+            <meta name="description" content="My description" />
+          </Helmet>
           <div className=" overflow-x-auto w-full">
             <table className="min-w-full divide-y divide-gray-200 table-auto">
               <thead className="bg-gray-50">

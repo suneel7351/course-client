@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import AdminAction from '../../redux/actions/admin';
 import toast from 'react-hot-toast';
@@ -52,7 +52,7 @@ function CreateCourses() {
     setCreatedBy('');
     setDescription('');
   };
- 
+
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -65,6 +65,11 @@ function CreateCourses() {
   }, [error, message, dispatch]);
   return (
     <>
+      {' '}
+      <Helmet>
+        <title>Create Course</title>
+        <meta name="description" content="My description" />
+      </Helmet>
       <div className="container mx-auto pt-2">
         <div className="flex justify-center mb-8">
           {imgPreview && (

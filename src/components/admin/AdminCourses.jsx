@@ -5,9 +5,8 @@ import AdminAction from '../../redux/actions/admin';
 import { MdDelete } from 'react-icons/md';
 import Loader from '../layouts/Loader';
 import toast from 'react-hot-toast';
+import {Helmet} from 'react-helmet'
 function Courses() {
-
-
   const { courses, loading, message, error } = useSelector(
     state => state.admin
   );
@@ -36,7 +35,10 @@ function Courses() {
         <Loader />
       ) : (
         <>
-          {' '}
+          <Helmet>
+            <title>Admin-Courses</title>
+            <meta name="description" content="My description" />
+          </Helmet>{' '}
           <div className=" overflow-x-auto w-full">
             <table className="min-w-full divide-y divide-gray-200 table-auto">
               <thead className="bg-gray-50">

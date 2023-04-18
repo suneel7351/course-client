@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Loader from '../layouts/Loader';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -128,6 +129,10 @@ function Profile() {
       ) : (
         <>
           {' '}
+          <Helmet>
+            <title>Profile</title>
+            <meta name="description" content="My description" />
+          </Helmet>{' '}
           {user && (
             <>
               <div className="flex flex-col md:flex-row gap-16 mt-4 justify-center ">
