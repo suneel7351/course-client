@@ -4,7 +4,14 @@ import { Link } from 'react-router-dom';
 import vg from '../assets/imgs/home.jpg';
 import CourseCard from './courses/CourseCard';
 import { Helmet } from 'react-helmet';
-function Home({ courses }) {
+import { useDispatch, useSelector } from 'react-redux';
+import CourseAction from '../redux/actions/course';
+function Home() {
+  const dispatch = useDispatch();
+  const { courses } = useSelector(state => state.course);
+  useEffect(() => {
+    dispatch(CourseAction.getAllCourses('', ''));
+  }, [dispatch]);
   return (
     <>
       {' '}

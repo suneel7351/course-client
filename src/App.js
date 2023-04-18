@@ -18,28 +18,26 @@ import Profile from './components/profile/Profile';
 import CreateCourses from './components/admin/CreateCourses';
 import Users from './components/admin/Users';
 import AdminCourses from './components/admin/AdminCourses';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import User from './redux/actions/user';
 import { ProtectedRoute } from 'protected-route-react';
-import CourseAction from './redux/actions/course';
 import Lectures from './components/admin/Lectures';
 import AdminRoute from './AdminRoute';
 import SubscriberRoute from './SubscriberRoute';
 import Work from './components/Work';
 
 function App() {
-  // window.addEventListener('contextmenu', e => {
-  //   e.preventDefault();
-  // });
+  window.addEventListener('contextmenu', e => {
+    e.preventDefault();
+  });
 
   const { isLogged, user } = useSelector(state => state.user);
-  const { courses } = useSelector(state => state.course);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(User.getUser());
-    dispatch(CourseAction.getAllCourses('', ''));
   }, [dispatch]);
 
   return (
@@ -49,8 +47,8 @@ function App() {
       <div className="mt-24 container mx-auto">
         {' '}
         <Routes>
-          <Route path="/" element={<Home courses={courses} />} />
-          <Route path="/courses" element={<Courses courses={courses} />} />{' '}
+          <Route path="/" element={<Home />} />
+          <Route path="/courses" element={<Courses />} />{' '}
           <Route element={<ProtectedRoute isAuthenticated={isLogged} />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/enroll" element={<Enroll user={user} />} />{' '}

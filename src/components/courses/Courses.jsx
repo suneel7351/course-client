@@ -29,8 +29,10 @@ const Courses = () => {
       toast.success(message);
       dispatch({ type: 'clearMessage' });
     }
-    dispatch(CourseAction.getAllCourses('', ''));
   }, [dispatch, userError, message]);
+  useEffect(() => {
+    dispatch(CourseAction.getAllCourses('', ''));
+  }, [dispatch]);
   return (
     <>
       {' '}

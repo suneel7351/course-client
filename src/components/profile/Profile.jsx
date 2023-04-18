@@ -54,7 +54,7 @@ function Profile() {
   };
   const cancelSubscriptionHandler = async () => {
     await dispatch(Subscription.cancelSubscription());
-    dispatch(User.getUser());
+   
   };
 
   const changeImageHandler = e => {
@@ -78,7 +78,6 @@ function Profile() {
     await dispatch(User.updateProfilePic(pic));
     setImage('');
     setImagePreview('');
-    dispatch(User.getUser());
     onClose();
   };
 
@@ -88,7 +87,6 @@ function Profile() {
     setName('');
     setEmail('');
     onCloseModal2();
-    dispatch(User.getUser());
   };
   const onCloseHandler = () => {
     onClose();
@@ -98,7 +96,7 @@ function Profile() {
 
   const removeFromPlaylistHandler = async id => {
     await dispatch(User.removeFromPlaylist(id));
-    dispatch(User.getUser());
+ 
   };
   useEffect(() => {
     if (error) {
@@ -117,6 +115,7 @@ function Profile() {
       toast.error(userError);
       dispatch({ type: 'clearError' });
     }
+    dispatch(User.getUser());
   }, [dispatch, error, message, userError, userMessage]);
 
   return (

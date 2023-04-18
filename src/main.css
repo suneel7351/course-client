@@ -78,7 +78,7 @@
     border: 3px solid transparent;
     border-top-color: var(--primary);
     border-left-color: var(--primary);
-    border-right-color: var(--primary);
+    /* border-right-color: var(--primary); */
     animation: spinner 900ms linear infinite;
 }
 

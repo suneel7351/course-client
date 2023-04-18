@@ -16,7 +16,7 @@ function CourseCard({
   const dispatch = useDispatch();
   const addToPlayList = async _id => {
     await dispatch(User.addToPlaylist(_id));
-    dispatch(User.getUser());
+   
   };
   return (
     <div className="shadow-md p-2 pb-4 w-[280px] md:w-[310px] mx-auto">
