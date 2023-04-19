@@ -11,11 +11,11 @@ function Footer() {
           src="https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819__340.png"
           alt=""
         />
-        <h1 className="text-2xl">CodeWithCoder</h1>
+        <h1 className="text-2xl">CodeWithJohn</h1>
         <div className="h-10 bg-slate-400 w-[2px]"></div>
       </div>
       <div className="text-slate-500">
-        Copyright © 2023 course-clients.vercel.app
+        Copyright © 2023 codewithjohn-two.vercel.app
       </div>
       <div className="flex items-center gap-4">
         <a target="_blank" href="https://www.linkedin.com/in/suneel7351/">

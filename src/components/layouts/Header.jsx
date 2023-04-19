@@ -51,29 +51,33 @@ function Header({ user, isLogged }) {
       <div className="header nav-wrapper">
         <div className="brand flex items-center gap-1 text-lg">
           <Link to={'/'}>
-            <span className="bg-yellow-300 text-blue-500 px-1 py-1 rounded-l-md">
+            <span className=" text-blue-900 px-1 py-1 rounded-l-md">
               {' '}
-              Code
-            </span>
-            <span className="bg-blue-500 text-slate-100 px-1 py-1 ">With</span>
-            <span className="bg-red-300 text-blue-500 px-1 py-1 rounded-r-md">
-              Coder
+              CodeWithJohn
             </span>
           </Link>
         </div>
 
         <ul className="nav-list" ref={nav_list}>
           <li onClick={handleLink}>
-            <Link className='text-lg' to={'/'}>Home</Link>
+            <Link className="text-lg" to={'/'}>
+              Home
+            </Link>
           </li>{' '}
           <li onClick={handleLink}>
-            <Link className='text-lg' to={'/courses'}>Courses</Link>
+            <Link className="text-lg" to={'/courses'}>
+              Courses
+            </Link>
           </li>
           <li onClick={handleLink}>
-            <Link className='text-lg' to={'/programming'}>Programming</Link>
+            <Link className="text-lg" to={'/programming'}>
+              Programming
+            </Link>
           </li>
           <li onClick={handleLink}>
-            <Link className='text-lg' to={'/blog'}>Blog</Link>
+            <Link className="text-lg" to={'/blog'}>
+              Blog
+            </Link>
           </li>
         </ul>
         <div className="right">
