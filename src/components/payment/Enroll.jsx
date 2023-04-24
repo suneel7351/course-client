@@ -61,6 +61,9 @@ function Enroll({ user }) {
       </Helmet>
       <div className="h-full py-8">
         <h1 className="text-5xl mb-8 text-center text-slate-700">Welcome</h1>
+        <h1 className="text-3xl py-4 text-center text-slate-700">
+          Pay with upi id for only testing purpose : success@razorpay
+        </h1>
         <div className="shadow-md  w-[280px] md:w-[30%] mx-auto">
           <div>
             <h1 className="bg-slate-700 text-slate-100 py-2 pl-4 rounded-t-md text-xl">
